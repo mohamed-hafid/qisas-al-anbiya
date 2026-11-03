@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="موسوعة مبسطة وموسعة لقصص عدد من الأنبياء والرسل، مع مراجع قرآنية وروابط فيديو قابلة للفتح.">
+  <title>قصص الأنبياء والرسل | Mohamed Hafid</title>
+  <style>
+    :root{--olive:#34483b;--olive2:#22352b;--gold:#c9a646;--cream:#f8f5ed;--ink:#202923;--muted:#6b756e;--white:#fff;--line:#e7e1d4;--red:#bd3d48}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.85}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .topbar{position:sticky;top:0;z-index:20;background:var(--olive2);color:#fff;border-bottom:3px solid var(--gold);box-shadow:0 5px 18px #0002}
+    .top-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}.brand-icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--olive2);font-size:23px}
+    .brand h1{font-size:20px;margin:0;line-height:1.3}.brand small{color:#e8d9a7;font-size:12px}
+    .tools{display:flex;gap:9px;align-items:center;flex:1;justify-content:flex-end;min-width:min(100%,310px)}
+    .search-wrap{position:relative;width:min(100%,300px)}.search-wrap input{width:100%;border:1px solid #ffffff50;border-radius:999px;background:#ffffff14;color:white;padding:9px 40px 9px 14px;outline:none}
+    .search-wrap input::placeholder{color:#e6e9e5}.search-wrap input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #c9a64630}
+    .search-mark{position:absolute;right:14px;top:7px;color:var(--gold)}
+    .icon-btn{border:0;border-radius:50%;width:42px;height:42px;background:var(--gold);color:#26362c;font-size:18px}.icon-btn.active{background:var(--red);color:#fff}
+    main{max-width:1200px;margin:auto;padding:24px 20px 38px}
+    .hero{position:relative;overflow:hidden;text-align:center;color:#fff;padding:35px 22px;border-radius:20px;margin-bottom:26px;background:linear-gradient(120deg,var(--olive),#173c2d);border:1px solid #c9a64680;box-shadow:0 12px 30px #1b302522}
+    .hero:after{content:"۞";position:absolute;left:18px;bottom:-80px;font-size:190px;color:#fff;opacity:.055;pointer-events:none}
+    .hero h2{position:relative;margin:0 0 8px;color:#f0d98d;font-size:clamp(23px,4vw,34px)}.hero p{position:relative;margin:0 auto;max-width:760px;color:#eef1ed;font-size:16px}
+    .credit{position:relative;display:inline-block;margin-top:16px;padding:5px 16px;border:1px solid #d4b85a88;border-radius:30px;background:#c9a64620;color:#f2dfa0;font-size:12px}
+    .notice{background:#fff9e9;border:1px solid #ead9a7;border-right:4px solid var(--gold);padding:13px 16px;border-radius:10px;margin:0 0 25px;color:#5c5136;font-size:13px}
+    .section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 16px}.section-head h2{font-size:21px;color:var(--olive);margin:0}.count{color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .story-card{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;display:flex;flex-direction:column;min-height:260px;box-shadow:0 4px 13px #28352b0b;transition:transform .2s,box-shadow .2s}
+    .story-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #28352b18}
+    .card-main{padding:18px;flex:1}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.number{font-size:11px;font-weight:bold;color:var(--olive);background:#f6f1e4;border:1px solid #e7d7aa;border-radius:30px;padding:4px 11px}
+    .heart{border:0;background:transparent;color:#c7c7c7;font-size:22px;padding:0 4px}.heart.saved{color:var(--red)}
+    .story-card h3{font-size:20px;color:var(--olive);margin:0 0 3px}.story-card h4{font-size:13px;color:#9a7624;margin:0 0 10px}.story-card p{font-size:13px;color:#68716b;margin:0}
+    .card-bottom{padding:12px 17px;background:#faf9f5;border-top:1px solid #f0ece3}.read-btn{width:100%;border:0;border-radius:8px;padding:10px 14px;color:#fff;background:var(--olive);font-weight:bold}.read-btn:hover{background:#24392c}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 10px;background:#fff;border:1px dashed #d7d0c2;border-radius:13px}
+    footer{background:#17251e;color:#e9eee9;border-top:2px solid #c9a64680;padding:18px 20px;text-align:center;font-size:12px}footer strong{color:#e8d18c}
+    .modal{position:fixed;inset:0;z-index:50;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}.modal[hidden]{display:none}
+    .modal-box{width:min(100%,950px);max-height:94vh;display:flex;flex-direction:column;background:white;border-radius:18px;overflow:hidden;border:2px solid var(--gold);box-shadow:0 20px 70px #0005}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--olive);color:#fff;padding:13px 17px}.modal-title-wrap{display:flex;align-items:center;gap:10px;min-width:0}.modal-badge{background:var(--gold);color:#27372c;border-radius:30px;padding:3px 10px;font-size:11px;white-space:nowrap}.modal-head h2{font-size:18px;color:#f4df9c;margin:0}
+    .modal-actions{display:flex;align-items:center;gap:8px}.plain-icon{background:transparent;border:0;color:#fff;font-size:22px;padding:4px}.plain-icon.saved{color:#ff8f9b}
+    .tabbar{background:#f1f1ed;border-bottom:1px solid #e5e4df;padding:9px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.tabs{display:flex;gap:7px}.tab{border:0;border-radius:8px;padding:8px 13px;background:#fff;color:#465148;font-size:13px;font-weight:bold}.tab.active{background:var(--olive);color:white}.font-tools{display:flex;align-items:center;gap:6px;color:#667068;font-size:12px}.font-tools button{border:1px solid #ddd;background:#fff;border-radius:5px;padding:2px 9px;font-weight:bold}
+    .modal-body{padding:22px 25px;overflow:auto;flex:1;background:#fffdf8}.story-text{font-family:Tahoma,Arial,sans-serif;color:#333e36;font-size:18px;line-height:2.05}.story-part{margin:0 0 25px}.story-part h3{font-size:19px;color:var(--olive);margin:0 0 8px;padding-right:11px;border-right:3px solid var(--gold)}.story-part p{margin:0 0 11px;text-align:justify}.quran-quote{background:#f8f4e9;border:1px solid #eadcb8;border-radius:9px;padding:12px 15px;margin:12px 0;color:#604d1d;font-weight:bold}
+    .refs{border-top:1px solid #e8e1d3;margin-top:25px;padding-top:15px;color:#667068;font-size:13px}.refs strong{color:var(--olive)}
+    .video-panel{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;background:#f7f8f6;border:1px dashed #cbd4cd;border-radius:12px}.video-panel .video-symbol{font-size:50px;color:var(--olive);margin-bottom:10px}.video-panel p{max-width:570px;color:#59645c;font-size:14px}.video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#111}.video-link{display:inline-block;text-decoration:none;background:#c83232;color:white;padding:11px 18px;border-radius:8px;font-weight:bold;margin-top:8px}.video-link:hover{background:#a92525}.video-fallback{color:#6a746d;font-size:12px;margin-top:10px}
+    .modal-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 15px;background:#f3f3ef;border-top:1px solid #e5e4df;color:#778078;font-size:11px}.close-btn{border:0;background:#dfe2dd;color:#344238;border-radius:7px;padding:7px 15px;font-weight:bold}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.top-inner{padding:10px 13px}.brand h1{font-size:17px}.tools{justify-content:stretch}.search-wrap{flex:1}.grid{grid-template-columns:1fr}.hero{padding:27px 17px}.modal{padding:7px}.modal-box{max-height:97vh}.modal-body{padding:17px 15px}.story-text{font-size:16px}.modal-head h2{font-size:15px}.modal-badge{display:none}.tab{padding:7px 9px;font-size:12px}.modal-foot{font-size:10px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">۞</div>
+        <div><h1>قصص الأنبياء والرسل</h1><small>إعداد وتطوير: Mohamed Hafid</small></div>
+      </div>
+      <div class="tools">
+        <div class="search-wrap"><span class="search-mark">⌕</span><input id="searchInput" type="search" placeholder="ابحث عن نبي أو موضوع..." autocomplete="off"></div>
+        <button class="icon-btn" id="favFilterBtn" type="button" title="عرض المفضلة" aria-label="عرض المفضلة">♥</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>سِيَرُ الأنبياء… دروسٌ وعِبَر</h2>
+      <p>رحلة قراءة في قصص الأنبياء والرسل كما وردت في القرآن الكريم، مع الاستفادة من الأحاديث الصحيحة، وبيان مواضع القصة ومراجعها.</p>
+      <div class="credit">تصميم وإعداد: <strong>Mohamed Hafid</strong></div>
+    </section>
+
+    <div class="notice"><strong>تنبيه علمي:</strong> لا يمكن معرفة كل التفاصيل التاريخية التي لم يذكرها الوحي. لذلك يتجنب هذا الموقع اختراع الحوارات والأسماء والأماكن والتواريخ، ويميّز بين ما ورد في القرآن وما ورد في الحديث الصحيح وما هو موضع اختلاف.</div>
+
+    <div class="section-head"><h2>اختر قصة لقراءتها</h2><span class="count" id="storyCount"></span></div>
+    <section class="grid" id="storiesGrid" aria-live="polite"></section>
+  </main>
+
+  <footer><div>جميع الحقوق محفوظة لتطبيق قصص الأنبياء © 2026</div><strong>تم التطوير والإعداد بواسطة: Mohamed Hafid</strong></footer>
+
+  <div class="modal" id="storyModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-title-wrap"><span class="modal-badge" id="modalBadge">قصة نبي</span><h2 id="modalTitle">عنوان القصة</h2></div>
+        <div class="modal-actions">
+          <button class="plain-icon" id="modalFavBtn" type="button" title="إضافة للمفضلة" aria-label="إضافة للمفضلة">♡</button>
+          <button class="plain-icon" id="closeX" type="button" title="إغلاق" aria-label="إغلاق">×</button>
+        </div>
+      </div>
+      <div class="tabbar">
+        <div class="tabs">
+          <button class="tab active" id="tabTextBtn" type="button">📖 قراءة القصة المفصلة</button>
+          <button class="tab" id="tabVideoBtn" type="button">▶ فيديو القصة</button>
+        </div>
+        <div class="font-tools"><span>حجم الخط:</span><button id="fontPlus" type="button" aria-label="تكبير الخط">+</button><button id="fontMinus" type="button" aria-label="تصغير الخط">−</button></div>
+      </div>
+      <div class="modal-body">
+        <article id="textTabContent" class="story-text"></article>
+        <section id="videoTabContent" hidden></section>
+      </div>
+      <div class="modal-foot"><span>قصص الأنبياء والرسل | Mohamed Hafid</span><button class="close-btn" id="closeFoot" type="button">إغلاق</button></div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    // القصص مبنية على الآيات المذكورة في مراجع كل قصة، مع تجنب التفاصيل غير الثابتة.
+    const stories = [
+      {
+        id: 1, name: 'آدم عليه السلام', title: 'أبو البشر وأول الأنبياء',
+        snippet: 'بداية خلق الإنسان، وتعليم آدم الأسماء، وسجود الملائكة، ووسوسة إبليس، والتوبة والهبوط إلى الأرض.',
+        videoQuery: 'قصة آدم عليه السلام كاملة قصص الأنبياء', videoId: '', videoPages:[{label:'قصة بداية الخلق ثم خلق آدم',url:'https://knowingallah.com/ar/videos/قصة-بداية-الخلق-ثم-خلق-آدم-عليه-السلام/'}],
+        parts: [
+          {heading:'إعلان خلق آدم واستخلافه في الأرض', paragraphs:[
+            'أخبر الله تعالى ملائكته أنه جاعل في الأرض خليفة، فكان ذلك بداية قصة الإنسان في الأرض. سألت الملائكة عن الحكمة من جعل من يفسد فيها ويسفك الدماء خليفة، ولم يكن سؤالهم اعتراضاً على أمر الله، بل طلباً لفهم الحكمة. فأخبرهم سبحانه أنه يعلم ما لا يعلمون.',
+            'خلق الله آدم من طين، ثم سوّاه ونفخ فيه من روحه، فصار بشراً سوياً. وعلّم الله آدم الأسماء كلها، ثم عرض الأشياء على الملائكة وطلب منهم أن يخبروه بأسمائها، فأقروا بعجزهم وقالوا إنهم لا علم لهم إلا ما علّمهم الله. عندئذ أظهر الله فضل آدم بالعلم الذي علّمه إياه.'
+          ]},
+          {heading:'سجود الملائكة ورفض إبليس', paragraphs:[
+            'أمر الله الملائكة أن يسجدوا لآدم سجود تكريم بأمر الله، فسجدوا جميعاً امتثالاً، إلا إبليس الذي رفض واستكبر. وبيّن القرآن أن إبليس من الجن، وأنه عصى أمر ربه بسبب الكبر؛ إذ زعم أنه أفضل من آدم لأنه خُلق من نار وآدم خُلق من طين. لم يكن رفضه جهلاً بالأمر، بل كان استكباراً وعصياناً.',
+            'طلب إبليس من الله أن يُمهله إلى يوم البعث، فأُمهل إلى الوقت المعلوم. وأعلن أنه سيحاول إغواء بني آدم وصرفهم عن طريق الحق، إلا عباد الله المخلصين الذين لا سلطان له عليهم.'
+          ]},
+          {heading:'السكن في الجنة والتحذير من الشجرة', paragraphs:[
+            'أسكن الله آدم الجنة، وجعل له فيها زوجاً، وأباح لهما أن يأكلا منها رغداً حيث شاءا، لكنه نهاهما عن شجرة معينة، وحذّرهما من طاعة الشيطان. لا يذكر القرآن نوع هذه الشجرة، ولذلك لا يصح الجزم بأنها تفاح أو قمح أو غير ذلك.',
+            'بدأ إبليس يوسوس لهما، وزيّن لهما مخالفة النهي، وادّعى أنه يريد لهما الخير والخلود. وأقسم لهما أنه ناصح، فاغترّا بوسوسته وأكلا من الشجرة. عندها ظهرت لهما عوراتهما، وأخذا يستران نفسيهما من ورق الجنة. وهكذا وقعا في المخالفة بعد أن خدعهما الشيطان.'
+          ]},
+          {heading:'التوبة والهبوط إلى الأرض', paragraphs:[
+            'لم يصرّ آدم على المعصية ولم يبررها، بل توجّه إلى ربه معترفاً بظلمه لنفسه، وعلّمه الله كلمات تاب بها. فتاب الله عليه وقبل توبته وهداه. وتعلّم البشر من هذه الحادثة أن الخطأ لا ينبغي أن يتحول إلى إصرار، وأن باب التوبة مفتوح لمن رجع إلى الله بصدق.',
+            'أخبر الله آدم وزوجه أنهما سيهبطان إلى الأرض، وأن فيها حياةً وعملاً وابتلاءً، وأن من اتبع هدى الله فلا خوف عليه ولا يحزن. ومن أعرض عن ذكر الله ضلّ وشقي. وهكذا بدأت حياة البشر على الأرض، ومعها مسؤولية الإيمان والعمل الصالح.'
+          ]},
+          {heading:'أهم الدروس من القصة', paragraphs:[
+            'تعلّمنا القصة أن العلم نعمة وسبب للتكريم، وأن الكبر يفسد صاحبه، وأن الشيطان عدو يزيّن الخطأ في صورة النصيحة، وأن الإنسان قد يخطئ لكنه يستطيع الرجوع إلى الله بالتوبة الصادقة.'
+          ]}
+        ],
+        refs:'البقرة: 30–39؛ الأعراف: 11–27؛ طه: 115–123؛ ص: 71–85.'
+      },
+      {
+        id: 2, name: 'نوح عليه السلام', title: 'رسول الصبر وصاحب السفينة',
+        snippet: 'دعوة قومه زمناً طويلاً، وموقف الملأ منه، وصناعة الفلك، والطوفان، ونجاة المؤمنين.',
+        videoQuery: 'قصة نوح عليه السلام كاملة بناء السفينة والطوفان', videoId:'', videoPages:[{label:'الجزء الأول من قصة نوح',url:'https://knowingallah.com/ar/videos/قصة-ادريس-والجزء-الأول-من-قصة-نوح-عليهما-السلام/'},{label:'بقية قصة نوح حتى وفاته',url:'https://knowingallah.com/ar/videos/بقية-قصة-نوح-عليه-السلام-وحتى-وفاته/'}],
+        parts:[
+          {heading:'بداية الدعوة وعبادة الأصنام', paragraphs:[
+            'أرسل الله نوحاً عليه السلام إلى قومه يدعوهم إلى عبادة الله وحده وترك عبادة الأصنام. وكان من الأصنام التي ذكرها القرآن: ودّ وسواع ويغوث ويعوق ونسر. دعاهم نوح إلى التوحيد، وذكّرهم بأن الله خلقهم ورزقهم، وأن عليهم أن يستغفروه ويتقوه حتى ينالوا رحمته.',
+            'لم يكتف نوح بطريقة واحدة في الدعوة؛ بل دعا قومه ليلاً ونهاراً، وأعلن لهم دعوته وجهر بها، كما نصحهم سراً. وذكّرهم بنعم الله، وبأن الاستغفار سبب للمغفرة ونزول المطر وكثرة الرزق والأموال والبنين والجنات والأنهار.'
+          ]},
+          {heading:'طول الصبر وموقف المكذبين', paragraphs:[
+            'ذكر القرآن أن نوحاً لبث في قومه ألف سنة إلا خمسين عاماً، أي تسعمائة وخمسين سنة يدعوهم. ومع طول هذه المدة لم يؤمن معه إلا قليل. كان كبار القوم يستكبرون عن اتباعه، ويقولون إنه بشر مثلهم، وإن الذين اتبعوه هم الضعفاء، وحاولوا التقليل من شأن المؤمنين به.',
+            'كان نوح يردّ عليهم بالحجة والرفق، ويؤكد أنه لا يطلب منهم مالاً ولا أجراً، وأن أجره على الله. كما بيّن أنه لا يستطيع طرد المؤمنين الفقراء لإرضاء المتكبرين؛ لأنهم سيلقون ربهم وهو مسؤول عن موقفه منهم.'
+          ]},
+          {heading:'الوحي بصناعة السفينة', paragraphs:[
+            'بعد استمرار التكذيب، أوحى الله إلى نوح أنه لن يؤمن من قومه إلا من قد آمن، وأمره أن يصنع الفلك تحت رعاية الله وتعليمه. بدأ نوح بصناعة السفينة، وكان قومه يمرّون به ويسخرون منه لأنه يصنع سفينة بعيداً عن الماء. لكنه استمر مطيعاً لأمر الله، وأخبرهم أن السخرية ستنتهي عندما يأتي أمر الله.',
+            'لا يحدد القرآن طول السفينة أو عرضها أو شكلها التفصيلي، ولا يصح اختراع هذه الأرقام. الثابت أن الله أمره أن يحمل فيها من كل زوجين اثنين، وأهله إلا من سبق عليه القول، ومن آمن معه، ولم يكن عدد المؤمنين كبيراً.'
+          ]},
+          {heading:'بداية الطوفان ونجاة المؤمنين', paragraphs:[
+            'عندما جاء أمر الله وفار التنور، أمر الله نوحاً أن يحمل في السفينة من أُمر بحملهم. انهمر الماء من السماء، وتفجرت عيون الأرض، والتقى الماء على أمر قد قُدّر. جرت السفينة في موج كالجبال، وكان نوح ومن معه في حفظ الله.',
+            'رأى نوح ابنه بعيداً عن السفينة فناداه أن يركب معهم وألا يكون مع الكافرين. لكن الابن ظن أن الجبل سيحميه من الماء، فحال الموج بينهما، وكان من المغرقين. دعا نوح ربه بشأن ابنه، فبيّن الله له أن النجاة ليست بمجرد النسب، وإنما بالإيمان والعمل الصالح، وأن الابن ليس من أهله الذين وعد الله بنجاتهم بهذا المعنى.'
+          ]},
+          {heading:'انتهاء الطوفان واستواء السفينة', paragraphs:[
+            'بعد أن انتهى الأمر، صدر الأمر للأرض أن تبتلع ماءها وللسماء أن تقلع عن المطر، وغيض الماء، واستوت السفينة على الجودي. نادى نوح ربه وسأله المغفرة والرحمة، فكانت نهاية القصة نجاة المؤمنين وهلاك المكذبين، وظهور عدل الله وحكمته.',
+            'تُظهر القصة أن كثرة المعارضين لا تجعل الباطل حقاً، وأن الداعية يحتاج إلى صبر طويل، وأن القرابة وحدها لا تنفع من دون الإيمان، وأن وعد الله حق ولو تأخر ظهوره في نظر الناس.'
+          ]}
+        ],
+        refs:'نوح: 1–28؛ هود: 25–49؛ المؤمنون: 23–30؛ الشعراء: 105–122؛ العنكبوت: 14–15.'
+      },
+      {
+        id: 3, name:'إبراهيم عليه السلام', title:'خليل الرحمن وأبو الأنبياء',
+        snippet:'بحثه عن الحق، ومحاجّة عبدة الكواكب والأصنام، والنجاة من النار، والهجرة، وبناء الكعبة.',
+        videoQuery:'قصة إبراهيم عليه السلام كاملة قصص الأنبياء', videoId:'', videoPages:[{label:'قصة إبراهيم - الجزء الأول',url:'https://knowingallah.com/ar/videos/قصة-إبراهيم-عليه-السلام-الجزء-الأول/'},{label:'قصة إبراهيم - الجزء الثاني',url:'https://knowingallah.com/ar/videos/قصة-إبراهيم-عليه-السلام-الجزء-الثاني/'}],
+        parts:[
+          {heading:'دعوة إبراهيم إلى التوحيد', paragraphs:[
+            'نشأ إبراهيم عليه السلام بين قوم يصرفون العبادة لغير الله. فأنكر عليهم عبادة الأصنام والكواكب، ودعاهم إلى عبادة خالق السماوات والأرض. وبدأ حواره مع أبيه، الذي سماه القرآن آزر، فنصحه ألا يعبد ما لا يسمع ولا يبصر ولا يغني عنه شيئاً. خاطبه بأدب ولين، وكرر له الدعوة إلى اتباع الحق.',
+            'عرض إبراهيم على قومه بطلان عبادة الكواكب؛ فرأى كوكباً ثم القمر ثم الشمس، وبيّن لقومه أن ما يأفل ويغيب لا يصلح أن يكون إلهاً. وختم موقفه بإعلان توجهه إلى الذي فطر السماوات والأرض، حنيفاً موحداً، لا يشرك بالله أحداً.'
+          ]},
+          {heading:'تحطيم الأصنام وإقامة الحجة', paragraphs:[
+            'كان قوم إبراهيم يعبدون أصناماً يصنعونها بأيديهم. فأنكر إبراهيم عليهم، وبيّن أن هذه التماثيل لا تسمع دعاءً ولا تنفع ولا تضر. وفي يوم خرج فيه قومه، دخل على أصنامهم فكسرها، وترك كبيراً لها، ليجعلهم يرجعون إلى أنفسهم ويفكرون في عجز ما يعبدون.',
+            'عندما عادوا ورأوا ما حدث، اتهموا إبراهيم وواجهوه بالسؤال. فأحالهم إلى كبير الأصنام، وقال لهم أن يسألوه إن كان ينطق. فعادوا إلى أنفسهم وأدركوا أن الأصنام لا تتكلم، لكنهم رجعوا إلى العناد بدلاً من قبول الحق.'
+          ]},
+          {heading:'إلقاؤه في النار', paragraphs:[
+            'قرّر القوم معاقبة إبراهيم، وقالوا إن عليهم أن يحرقوه وينصروا آلهتهم. فأعدّوا ناراً عظيمة وألقوه فيها. لكن الله جعل النار برداً وسلاماً عليه، فلم تحرقه ولم تضره، وخرج منها محفوظاً. كانت هذه آية عظيمة أظهرت أن الأسباب كلها بيد الله، وأن النار لا تؤثر إلا بإذنه.'
+          ]},
+          {heading:'الهجرة والرزق بالذرية', paragraphs:[
+            'بعد استمرار الأذى، هاجر إبراهيم في سبيل الله إلى الأرض التي بارك الله فيها للعالمين. ورزقه الله الذرية الصالحة، ومن ذريته إسماعيل وإسحاق، وجعل في ذريته النبوة والكتاب. وكان إبراهيم كثير الدعاء، يسأل الله أن يجعله وذريته مقيمي الصلاة، وأن يجنّبهم عبادة الأصنام.',
+            'ومن الأحداث الثابتة في السنة الصحيحة أن إبراهيم ترك هاجر وابنها إسماعيل في وادٍ غير ذي زرع عند موضع البيت بأمر الله. نفد الماء، فسعت هاجر بين الصفا والمروة تبحث عن الغوث، ففجّر الله زمزم رحمةً بهما. صار هذا السعي من شعائر الحج، وبقي ماء زمزم نعمة مرتبطة بتلك الحادثة.'
+          ]},
+          {heading:'الرؤيا والابتلاء وبناء الكعبة', paragraphs:[
+            'ابتلى الله إبراهيم في ابنه، فرأى في المنام أنه يذبحه، ورؤيا الأنبياء وحي. أخبر ابنه بما رأى، فاستجاب الابن بصبر وتسليم، وأثنى الله عليهما. وعندما أظهرا الصدق في الامتثال، فداه الله بذبح عظيم. لا يسمّي القرآن الابن في آيات القصة باسمه، لذلك نذكر هنا ما ورد في النص القرآني دون الجزم بتفصيل مختلف فيه.',
+            'ثم رفع إبراهيم وإسماعيل قواعد البيت الحرام، وهما يدعوان الله أن يتقبل منهما وأن يجعل من ذريتهما أمة مسلمة له. ودعا إبراهيم أن يبعث في أهل مكة رسولاً منهم يتلو عليهم آيات الله ويعلمهم الكتاب والحكمة ويزكيهم. وقد كان من نسل إسماعيل محمد صلى الله عليه وسلم.'
+          ]},
+          {heading:'منزلته والدروس المستفادة', paragraphs:[
+            'سمّى الله إبراهيم خليلاً، وجعله إماماً للناس، وأثنى عليه بأنه كان أمة قانتاً لله حنيفاً ولم يك من المشركين. وتعلمنا قصته الثبات على التوحيد، والأدب في نصح الوالدين، والشجاعة في قول الحق، والتوكل على الله، والصبر على الابتلاء، والإخلاص في العبادة.'
+          ]}
+        ],
+        refs:'البقرة: 124–132؛ الأنعام: 74–83؛ مريم: 41–50؛ الأنبياء: 51–70؛ الصافات: 83–113؛ إبراهيم: 35–41. وحديث هاجر وزمزم: صحيح البخاري، كتاب أحاديث الأنبياء.'
+      },
+      {
+        id:4, name:'موسى عليه السلام', title:'كليم الله ورسول بني إسرائيل',
+        snippet:'مولده في زمن فرعون، وعودته إلى أمه، وخروجه إلى مدين، والرسالة، ومواجهة فرعون، ونجاة بني إسرائيل.',
+        videoQuery:'قصة موسى عليه السلام كاملة نبيل العوضي', videoId:'peHw6p_r2-A', videoPages:[{label:'قصة موسى - الجزء الأول',url:'https://knowingallah.com/ar/videos/قصة-موسى-عليه-السلام-الجزء-الأول/'}],
+        parts:[
+          {heading:'مولد موسى في زمن فرعون', paragraphs:[
+            'كان فرعون متجبراً في الأرض، يستضعف بني إسرائيل ويقتل أبناءهم ويستحيي نساءهم. وفي هذا الزمن ولد موسى عليه السلام. خافت أمه عليه، فأوحى الله إليها أن ترضعه، فإذا خافت عليه تلقيه في اليم، ووعدها أن يرده إليها وأن يجعله من المرسلين.',
+            'وضعت أمه موسى في صندوق وألقته في النهر، فالتقطه آل فرعون. وألقى الله محبته في قلب من رآه، فقالت امرأة فرعون إن هذا الطفل قد يكون قرة عين لهم، وطلبت ألا يقتلوه. وهكذا دخل موسى بيت فرعون الذي كان يقتل أبناء بني إسرائيل.'
+          ]},
+          {heading:'عودته إلى أمه وخروجه من مصر', paragraphs:[
+            'حرّم الله على موسى المراضع، فلم يقبل ثدي امرأة. وكانت أخته تراقب خبره، فدلّتهم على أهل بيت يكفلونه. فعاد إلى أمه كي تقر عينها ولا تحزن، وبهذا تحقق وعد الله. ونشأ موسى في رعاية الله حتى بلغ أشده واستوى.',
+            'وفي يوم دخل المدينة في وقت غفلة من أهلها، فوجد رجلين يقتتلان، أحدهما من بني إسرائيل والآخر من قوم فرعون. استغاثه الإسرائيلي، فضرب موسى الآخر ضربة أدت إلى موته من غير قصد القتل. أدرك موسى خطأه، فاستغفر الله وتاب إليه. ثم جاءه رجل يحذره من أن الملأ يأتمرون به ليقتلوه، فخرج من مصر خائفاً يترقب متوجهاً إلى مدين.'
+          ]},
+          {heading:'مدين والزواج والعودة', paragraphs:[
+            'وصل موسى إلى ماء مدين، فوجد جماعة من الناس يسقون، ورأى امرأتين تمنعان غنمهما من الاختلاط بالرجال. فسألهما عن حالهما، ثم سقى لهما دون أن يطلب أجراً. رجع إلى الظل ودعا ربه أن يرزقه من فضله. وبعد ذلك دعاه أبو المرأتين إلى بيته، وقصّ عليه موسى خبره، فعرض عليه أن يزوجه إحدى ابنتيه مقابل أن يعمل عنده مدة معلومة، فقبل موسى الاتفاق.',
+            'بعد أن قضى موسى الأجل وسار بأهله، رأى ناراً من جانب الطور. ذهب إليها يلتمس خبراً أو قبساً، فناداه الله في الوادي المقدس طوى، وأخبره أنه سبحانه رب العالمين، وأمره أن يخلع نعليه في الوادي المقدس.'
+          ]},
+          {heading:'التكليف بالرسالة ومواجهة فرعون', paragraphs:[
+            'كلّف الله موسى بالرسالة إلى فرعون، وأيده بآيات: العصا التي تتحول بإذن الله إلى حيّة تسعى، واليد التي تخرج بيضاء من غير سوء. طلب موسى من الله أن يشرح صدره وييسر أمره ويحلل عقدة من لسانه، وأن يجعل أخاه هارون وزيراً له؛ فاستجاب الله له وجعل هارون نبياً يعينه.',
+            'ذهب موسى وهارون إلى فرعون ودعواه إلى عبادة الله وإرسال بني إسرائيل معهما، وخاطباه بقول لين. لكن فرعون تكبر واتهمهما بالسحر. وجمع السحرة في يوم الزينة، وألقى السحرة حبالهم وعصيهم فخيّل إلى الناس أنها تتحرك. فألقى موسى عصاه فابتلعت ما صنعوا، فعرف السحرة أن ذلك ليس سحراً، فآمنوا برب موسى وهارون رغم تهديد فرعون.'
+          ]},
+          {heading:'الخروج وشق البحر', paragraphs:[
+            'استمر فرعون في العناد، فأمر الله موسى أن يخرج ببني إسرائيل ليلاً. تبعهم فرعون وجنوده، فلما وصل موسى ومن معه إلى البحر قال أصحاب موسى إنهم مدركون. فأوحى الله إليه أن يضرب بعصاه البحر، فانفلق فصار كل فرق كالطود العظيم، وظهرت طرق يابسة عبروا منها.',
+            'دخل فرعون وجنوده الطريق نفسه، فلما اكتمل عبور موسى ومن معه انطبق الماء على فرعون وجنوده فغرقوا. وعندما أدرك فرعون الغرق أعلن إيمانه، لكن الإيمان عند معاينة العذاب لم ينفعه. وأنجى الله موسى وبني إسرائيل، وكانت النهاية سقوط الطغيان الذي استعبد الناس.'
+          ]},
+          {heading:'موسى بعد النجاة والدروس', paragraphs:[
+            'لم تنته ابتلاءات بني إسرائيل بعد النجاة؛ فقد احتاجوا إلى التوجيه والصبر، وعبد بعضهم العجل في غياب موسى، فرجع موسى غاضباً لله، وذكّرهم بالتوحيد. وتضمنت قصته كذلك ميقات الطور، والألواح، ومناجاة الله، ومواقف كثيرة من التربية والصبر.',
+            'تعلّمنا قصة موسى أن الله يحفظ من يشاء بقدرته، وأن الظلم لا يدوم، وأن القوة ليست في البطش بل في طاعة الله، وأن طلب العون من الله والأخذ بالأسباب والصبر من أعظم أسباب الثبات.'
+          ]}
+        ],
+        refs:'البقرة: 49–61؛ الأعراف: 103–137؛ طه: 9–98؛ الشعراء: 10–68؛ القصص: 3–46؛ النازعات: 15–26.'
+      },
+      {
+        id:5, name:'عيسى عليه السلام', title:'رسول الله وكلمته ألقاها إلى مريم',
+        snippet:'بشارة مريم، والميلاد المعجز، وكلامه في المهد، والآيات التي أيده الله بها، ورفعه إليه.',
+        videoQuery:'قصة عيسى ابن مريم عليه السلام كاملة من القرآن', videoId:'', videoPages:[{label:'قصة عيسى عليه السلام',url:'https://knowingallah.com/ar/videos/قصة-عيسى-عليه-السلام/'}],
+        parts:[
+          {heading:'اصطفاء مريم وبشارة الملائكة', paragraphs:[
+            'اصطفى الله مريم بنت عمران وطهرها، وكانت عابدة قانتة. اعتزلت أهلها في مكان شرقي، فأرسل الله إليها روحه، فظهر لها في صورة بشر سوي. استعاذت بالله منه إن كان تقياً، فأخبرها أنه رسول ربها ليهب لها غلاماً زكياً. تعجبت مريم؛ إذ لم يمسسها بشر ولم تكن بغياً، فأخبرها أن ذلك على الله يسير، وأنه آية للناس ورحمة من الله.',
+            'حملت مريم بعيسى بأمر الله من غير أب، وكان في ذلك دليل على قدرة الله؛ فقد خلق آدم من غير أب ولا أم، وخلق عيسى من أم بلا أب، وكل ذلك بقدرته سبحانه. لا يذكر القرآن تفاصيل طبية أو زمنية للحمل والولادة إلا ما شاء الله أن يبينه.'
+          ]},
+          {heading:'الولادة والعودة إلى قومها', paragraphs:[
+            'ابتعدت مريم عن الناس حتى جاءها المخاض، فألجأها إلى جذع النخلة. تمنت في شدة ألمها لو أنها ماتت قبل ذلك ونُسيت، فطمأنها الله، وأمرها أن تهز جذع النخلة لتساقط عليها رطباً جنياً، وأن تأكل وتشرب وتقر عيناً. كما أمرها إذا رأت أحداً من البشر أن تشير إلى أنها نذرت للرحمن صوماً عن الكلام.',
+            'عادت مريم تحمل طفلها، فاتهمها قومها واستغربوا ما رأوا. لم تجادلهم، بل أشارت إلى الطفل. تعجبوا كيف يكلمون طفلاً في المهد، فأنطق الله عيسى وقال إنه عبد الله، آتاه الكتاب وجعله نبياً، وأوصاه بالصلاة والزكاة ما دام حياً، وجعله باراً بوالدته، ولم يجعله جباراً شقياً.'
+          ]},
+          {heading:'رسالته إلى بني إسرائيل', paragraphs:[
+            'كبر عيسى عليه السلام، وأرسله الله إلى بني إسرائيل مصدقاً لما بين يديه من التوراة، ومبشراً برسول يأتي من بعده اسمه أحمد. ودعا قومه إلى عبادة الله ربه وربهم، وبيّن لهم أنه رسول الله إليهم، وليس إلهاً ولا ابن إله. وكانت دعوته قائمة على التوحيد والرحمة والطاعة.',
+            'أيده الله بمعجزات عظيمة، لكنه كان يؤكد أنها تقع بإذن الله لا بقوته الذاتية: كان يصور من الطين كهيئة الطير فينفخ فيه فيكون طيراً بإذن الله، ويبرئ الأكمه والأبرص، ويحيي الموتى بإذن الله، ويخبر الناس بما يأكلون وما يدخرون في بيوتهم. وكانت هذه الآيات دليلاً على صدق رسالته لمن أراد الحق.'
+          ]},
+          {heading:'الحواريون وموقف الناس منه', paragraphs:[
+            'لما أحس عيسى بالكفر من بعض بني إسرائيل قال: من أنصاري إلى الله؟ فأجابه الحواريون أنهم أنصار الله، وآمنوا به، ودعوا الله أن يكتبهم مع الشاهدين. كما ورد في القرآن خبر المائدة التي طلب الحواريون نزولها من السماء لتطمئن قلوبهم، فذكّرهم عيسى بتقوى الله، ثم دعا ربه، فأنزل الله المائدة وجعل ذلك آية وعهداً عظيماً.'
+          ]},
+          {heading:'محاولة قتله ورفعه إلى الله', paragraphs:[
+            'مكر بعض خصوم عيسى به وأرادوا قتله، لكن القرآن يقرر أنهم ما قتلوه وما صلبوه، وإنما شُبّه لهم، وأن الله رفعه إليه. ولا يذكر القرآن اسم الشخص الذي وقع عليه الشبه، لذلك لا ينبغي الجزم باسم أو تفاصيل لم يثبت بها نص صحيح صريح.',
+            'يؤكد القرآن براءة عيسى من الغلو فيه: فهو عبد الله ورسوله، وكلمته ألقاها إلى مريم وروح منه، وليس إلهاً. وتعلّمنا قصته طهارة مريم وصبرها، وأن المعجزات بيد الله، وأن الأنبياء جميعاً دعوا إلى عبادة الله وحده.'
+          ]}
+        ],
+        refs:'آل عمران: 33–59؛ النساء: 156–159؛ المائدة: 110–120؛ مريم: 16–36؛ الصف: 6.'
+      },
+      {
+        id:6, name:'محمد صلى الله عليه وسلم', title:'خاتم الأنبياء ورحمة للعالمين',
+        snippet:'النشأة في مكة، نزول الوحي، الدعوة والصبر، الهجرة إلى المدينة، بناء المجتمع، والرسالة الخاتمة.',
+        videoQuery:'السيرة النبوية كاملة بدر المشاري الحلقة الأولى', videoId:'', videoPages:[{label:'قصة النبي محمد صلى الله عليه وسلم كاملة',url:'https://knowingallah.com/ar/videos/قصة-محمد-صلى-الله-عليه-وسلم/'}],
+        parts:[
+          {heading:'النسب والمولد والطفولة', paragraphs:[
+            'هو محمد بن عبد الله بن عبد المطلب، من بني هاشم من قريش. ولد في مكة، وكان أبوه عبد الله قد توفي قبل ولادته، فنشأ يتيماً. أرضعته حليمة السعدية في بني سعد مدة من طفولته، ثم عاد إلى أمه آمنة. ولما بلغ نحو ست سنوات توفيت أمه، فكفله جده عبد المطلب، ثم بعد وفاة جده كفله عمه أبو طالب.',
+            'نشأ النبي صلى الله عليه وسلم معروفاً بالصدق والأمانة وحسن الخلق، وعمل في رعي الغنم ثم في التجارة. وتزوج خديجة بنت خويلد رضي الله عنها، وكانت أول من آمن به وساندته. وقبل البعثة شارك قومه في شؤونهم، وكان بعيداً عن عبادة الأصنام.'
+          ]},
+          {heading:'نزول الوحي وبداية الرسالة', paragraphs:[
+            'كان النبي صلى الله عليه وسلم يحب الخلوة والتفكر، فكان يتعبد في غار حراء. وعندما بلغ الأربعين جاءه جبريل عليه السلام بأول الوحي، وقال له: اقرأ. ونزلت أوائل سورة العلق. رجع النبي إلى خديجة رضي الله عنها وهو يرجف من هول ما رأى، فطمأنته وذكّرته بخصاله من صلة الرحم وإعانة المحتاج وإكرام الضيف ونصرة المظلوم.',
+            'ذهبت به خديجة إلى ورقة بن نوفل، وكان يعرف شيئاً من الكتب السابقة، فأخبره أن الذي جاءه هو الناموس الذي نزل على موسى. ثم تتابع الوحي، وأمر الله نبيه أن يقوم فينذر الناس، فبدأت الدعوة إلى توحيد الله وترك الشرك.'
+          ]},
+          {heading:'الدعوة في مكة والصبر على الأذى', paragraphs:[
+            'بدأ النبي دعوته بمن يثق بهم، فآمن به عدد من السابقين، منهم خديجة وأبو بكر وعلي وزيد بن حارثة رضي الله عنهم. ثم أمره الله بالجهر بالدعوة، فدعا أقاربه وسائر الناس. عارضت قريش دعوته لأنها رأت فيها تهديداً لمصالحها ومكانتها الدينية، وآذت النبي وأصحابه بطرق مختلفة.',
+            'ثبت المسلمون على دينهم رغم التعذيب والمقاطعة والضغوط، وأذن النبي لبعض أصحابه بالهجرة إلى الحبشة حيث وجدوا ملكاً عادلاً لا يظلم عنده أحد. ثم اشتد الأذى، وتوفيت خديجة وأبو طالب في عام واحد، فكان ذلك عاماً شديد الحزن على النبي. وذهب إلى الطائف يدعو أهلها، فقوبل بالرفض والأذى، لكنه لم يدع عليهم بالهلاك، بل رجَا أن يخرج الله من أصلابهم من يعبده.'
+          ]},
+          {heading:'الإسراء والمعراج وبيعة العقبة', paragraphs:[
+            'أكرم الله نبيه برحلة الإسراء من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلا، وفرضت الصلاة. وبعد ذلك لقي النبي جماعة من أهل يثرب فآمنوا به، ثم تمت بيعتا العقبة، وتعهد الأنصار بنصرته وحمايته. أصبح للمسلمين مكان يستطيعون فيه إقامة دينهم بأمان أكبر.'
+          ]},
+          {heading:'الهجرة وبناء المجتمع في المدينة', paragraphs:[
+            'أذن الله للمسلمين بالهجرة إلى المدينة. وخرج النبي مع أبي بكر رضي الله عنه، واختبآ في غار ثور أياماً، ثم تابعا الطريق حتى وصلا إلى قباء، وبعدها دخلا المدينة. استقبل أهلها النبي بفرح كبير، وبدأ بناء المسجد النبوي، وآخى بين المهاجرين والأنصار، ونظم العلاقات بين سكان المدينة.',
+            'أصبحت المدينة مركز الدولة الإسلامية، وتعلم المسلمون فيها أحكام العبادة والمعاملات والأسرة والأخلاق. وواجه المسلمون تحديات خارجية وداخلية، ووقعت بدر وأحد والخندق، ثم صلح الحديبية، وفتح الله مكة للنبي وأصحابه. وكان النبي يعفو عند القدرة، ويحث على الرحمة والعدل والوفاء بالعهود.'
+          ]},
+          {heading:'حجة الوداع ووفاته', paragraphs:[
+            'في السنة العاشرة للهجرة حج النبي بالمسلمين، وخطب فيهم خطبة عظيمة أكد فيها حرمة الدماء والأموال والأعراض، وحقوق النساء، وأخوة المسلمين، والتمسك بكتاب الله. ونزل قول الله تعالى: اليوم أكملت لكم دينكم وأتممت عليكم نعمتي ورضيت لكم الإسلام ديناً.',
+            'بعد ذلك مرض النبي صلى الله عليه وسلم، وتوفي في المدينة في السنة الحادية عشرة للهجرة، وعمره ثلاث وستون سنة على المشهور في الأحاديث الصحيحة. حزن أصحابه لفراقه، لكن رسالته بقيت محفوظة في القرآن والسنة، وقد بلغ الأمانة وأدى الرسالة ونصح الأمة.'
+          ]},
+          {heading:'الدروس من السيرة النبوية', paragraphs:[
+            'تعلمنا السيرة الصبر عند الشدائد، والصدق والأمانة، والرحمة بالناس، والشورى، والوفاء بالعهد، والتوازن بين العبادة والعمل، وأن بناء المجتمع يحتاج إلى علم وأخلاق وتعاون وعدل.'
+          ]}
+        ],
+        refs:'آيات البعثة والدعوة: العلق: 1–5؛ المدثر: 1–7؛ المزمل: 1–10. الهجرة: التوبة: 40. الإسراء: الإسراء: 1. خطبة الوداع وإكمال الدين: المائدة: 3. ومن مصادر السيرة الصحيحة: صحيح البخاري، كتاب بدء الوحي وكتاب المناقب والمغازي؛ وصحيح مسلم، كتاب الفضائل.'
+      }
+    ];
+
+    const grid = document.getElementById('storiesGrid');
+    const searchInput = document.getElementById('searchInput');
+    const modal = document.getElementById('storyModal');
+    const textPanel = document.getElementById('textTabContent');
+    const videoPanel = document.getElementById('videoTabContent');
+    const favFilterBtn = document.getElementById('favFilterBtn');
+    let currentStory = null;
+    let favoritesOnly = false;
+    let fontSize = 18;
+
+    function readFavorites(){
+      try {
+        const value = JSON.parse(localStorage.getItem('prophets_favs') || '[]');
+        return Array.isArray(value) ? value.filter(Number.isInteger) : [];
+      } catch(error) { return []; }
+    }
+    function writeFavorites(list){
+      try { localStorage.setItem('prophets_favs', JSON.stringify(list)); return true; }
+      catch(error) { alert('تعذر حفظ المفضلة في هذا المتصفح. يمكنك متابعة القراءة بشكل عادي.'); return false; }
+    }
+    function isFavorite(id){ return readFavorites().includes(id); }
+
+    function renderStories(){
+      const query = searchInput.value.trim().toLocaleLowerCase('ar');
+      let filtered = stories.filter(story => {
+        const haystack = [story.name, story.title, story.snippet, story.refs].join(' ').toLocaleLowerCase('ar');
+        return haystack.includes(query) && (!favoritesOnly || isFavorite(story.id));
+      });
+      grid.replaceChildren();
+      document.getElementById('storyCount').textContent = `عدد القصص المعروضة: ${filtered.length} من ${stories.length}`;
+      if(!filtered.length){
+        const empty = document.createElement('div'); empty.className='empty';
+        empty.textContent = favoritesOnly ? 'لا توجد قصص في المفضلة حالياً.' : 'لا توجد قصة مطابقة لكلمات البحث.';
+        grid.appendChild(empty); return;
+      }
+      filtered.forEach(story => {
+        const card = document.createElement('article'); card.className='story-card';
+        const main = document.createElement('div'); main.className='card-main';
+        const top = document.createElement('div'); top.className='card-top';
+        const number = document.createElement('span'); number.className='number'; number.textContent=`القصة رقم ${story.id}`;
+        const heart = document.createElement('button'); heart.type='button'; heart.className='heart'+(isFavorite(story.id)?' saved':''); heart.textContent=isFavorite(story.id)?'♥':'♡'; heart.title='إضافة أو إزالة من المفضلة'; heart.setAttribute('aria-label',heart.title);
+        heart.addEventListener('click',()=>toggleFavorite(story.id));
+        top.append(number,heart);
+        const h3=document.createElement('h3'); h3.textContent=story.name;
+        const h4=document.createElement('h4'); h4.textContent=story.title;
+        const p=document.createElement('p'); p.textContent=story.snippet;
+        main.append(top,h3,h4,p);
+        const bottom=document.createElement('div'); bottom.className='card-bottom';
+        const read=document.createElement('button'); read.type='button'; read.className='read-btn'; read.textContent='اقرأ القصة بالتفصيل ←'; read.addEventListener('click',()=>openStory(story.id));
+        bottom.append(read); card.append(main,bottom); grid.append(card);
+      });
+    }
+
+    function renderStoryText(story){
+      textPanel.replaceChildren();
+      story.parts.forEach(part=>{
+        const section=document.createElement('section'); section.className='story-part';
+        const heading=document.createElement('h3'); heading.textContent=part.heading; section.append(heading);
+        part.paragraphs.forEach(paragraph=>{const p=document.createElement('p');p.textContent=paragraph;section.append(p);});
+        textPanel.append(section);
+      });
+      const refs=document.createElement('div'); refs.className='refs';
+      const strong=document.createElement('strong'); strong.textContent='مواضع القصة ومراجعها: ';
+      refs.append(strong,document.createTextNode(story.refs)); textPanel.append(refs);
+      textPanel.style.fontSize=fontSize+'px';
+    }
+
+    function renderVideo(story){
+      videoPanel.replaceChildren();
+      videoPanel.className='video-panel';
+      const symbol=document.createElement('div');symbol.className='video-symbol';symbol.textContent='▶';
+      const title=document.createElement('h3');title.textContent='مشاهدة فيديو عن '+story.name;
+      const description=document.createElement('p');
+      description.textContent='اختر رابط مشاهدة القصة. إذا لم يعمل مشغل الفيديو داخل الصفحة، افتح صفحة الفيديو أو نتائج يوتيوب في نافذة جديدة.';
+      videoPanel.append(symbol,title,description);
+      if(story.videoId){
+        const frame=document.createElement('iframe');
+        frame.className='video-frame';
+        frame.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(story.videoId)+'?rel=0';
+        frame.title='فيديو عن '+story.name;
+        frame.loading='lazy'; frame.referrerPolicy='strict-origin-when-cross-origin';
+        frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.allowFullscreen=true;
+        videoPanel.append(frame);
+      }
+      (story.videoPages || []).forEach((page,index)=>{
+        const link=document.createElement('a');
+        link.href=page.url; link.target='_blank'; link.rel='noopener noreferrer'; link.className='video-link';
+        link.textContent=page.label+' ↗';
+        videoPanel.append(link);
+      });
+      const queryLink=document.createElement('a');
+      queryLink.href='https://www.youtube.com/results?search_query='+encodeURIComponent(story.videoQuery);
+      queryLink.target='_blank'; queryLink.rel='noopener noreferrer';
+      queryLink.className='video-link'; queryLink.style.background='#40564a';
+      queryLink.textContent='خيارات فيديو إضافية على يوتيوب ↗';
+      videoPanel.append(queryLink);
+      const fallback=document.createElement('div');fallback.className='video-fallback';
+      fallback.textContent='تشغيل الفيديو يتطلب اتصالاً بالإنترنت. الروابط الخارجية تفتح في علامة تبويب جديدة.';
+      videoPanel.append(fallback);
+    }
+
+    function updateFavoriteButtons(){
+      const saved=isFavorite(currentStory.id);
+      document.getElementById('modalFavBtn').textContent=saved?'♥':'♡';
+      document.getElementById('modalFavBtn').classList.toggle('saved',saved);
+      document.getElementById('modalFavBtn').title=saved?'إزالة من المفضلة':'إضافة للمفضلة';
+    }
+    function toggleFavorite(id){
+      let list=readFavorites();
+      list=list.includes(id)?list.filter(item=>item!==id):[...list,id];
+      writeFavorites(list); renderStories();
+      if(currentStory && currentStory.id===id) updateFavoriteButtons();
+    }
+    function openStory(id){
+      currentStory=stories.find(story=>story.id===id); if(!currentStory)return;
+      document.getElementById('modalTitle').textContent=currentStory.name;
+      document.getElementById('modalBadge').textContent=currentStory.title;
+      renderStoryText(currentStory); renderVideo(currentStory); updateFavoriteButtons();
+      switchTab('text'); modal.hidden=false; document.body.style.overflow='hidden';
+      document.getElementById('closeX').focus();
+    }
+    function closeModal(){
+      modal.hidden=true; document.body.style.overflow='';
+      // إزالة iframe توقف الفيديو فعلياً عند إغلاق النافذة.
+      const frame=videoPanel.querySelector('iframe'); if(frame) frame.src='about:blank';
+      videoPanel.replaceChildren(); currentStory=null;
+    }
+    function switchTab(which){
+      const isText=which==='text'; textPanel.hidden=!isText; videoPanel.hidden=isText;
+      document.getElementById('tabTextBtn').classList.toggle('active',isText);
+      document.getElementById('tabVideoBtn').classList.toggle('active',!isText);
+    }
+
+    searchInput.addEventListener('input',renderStories);
+    favFilterBtn.addEventListener('click',()=>{
+      favoritesOnly=!favoritesOnly; favFilterBtn.classList.toggle('active',favoritesOnly);
+      favFilterBtn.title=favoritesOnly?'إلغاء تصفية المفضلة':'عرض المفضلة'; renderStories();
+    });
+    document.getElementById('modalFavBtn').addEventListener('click',()=>{if(currentStory)toggleFavorite(currentStory.id);});
+    document.getElementById('tabTextBtn').addEventListener('click',()=>switchTab('text'));
+    document.getElementById('tabVideoBtn').addEventListener('click',()=>switchTab('video'));
+    document.getElementById('fontPlus').addEventListener('click',()=>{fontSize=Math.min(28,fontSize+2);textPanel.style.fontSize=fontSize+'px';});
+    document.getElementById('fontMinus').addEventListener('click',()=>{fontSize=Math.max(14,fontSize-2);textPanel.style.fontSize=fontSize+'px';});
+    document.getElementById('closeX').addEventListener('click',closeModal);
+    document.getElementById('closeFoot').addEventListener('click',closeModal);
+    modal.addEventListener('click',event=>{if(event.target===modal)closeModal();});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!modal.hidden)closeModal();});
+
+    // بدء التطبيق بعد تحميل عناصر الصفحة.
+    renderStories();
+  </script>
+</body>
+</html>
